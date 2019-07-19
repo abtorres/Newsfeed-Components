@@ -36,27 +36,29 @@ let menuItems = [
 */
 
 function createMenu(menuItems) {
+  //create div element
   const menu = document.createElement('div');
   menu.classList.add('menu');
-
+  //create ul and append to menu
   const menuList = document.createElement('ul');
   menu.appendChild(menuList);
-  
+  //access all menu items and append to ul
   menuItems.forEach(item => {
     const li = document.createElement('li');
     li.textContent = item;
     menuList.appendChild(li);
   });
-
+  //return our element
   return menu;
 }
-
+//open and close menu
 const toggleMenu = () => {
   const menu = document.querySelector('.menu');
   menu.classList.toggle('menu--open');
 }
-
+//selecting mount point
 const header = document.querySelector('.header');
+header.addEventListener('click', toggleMenu);
+//appending our component to selected DOM elelment
 header.appendChild(createMenu(menuItems));
 
-header.addEventListener('click', toggleMenu);

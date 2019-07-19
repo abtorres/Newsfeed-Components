@@ -130,41 +130,44 @@ const data = [
 */
 
 function createArticle(data) {
+  //main article element
   let article = document.createElement('div');
   article.classList.add('article');
-
+  //h2 element
   let h2 = document.createElement('h2');
   h2.textContent = data.title;
   article.appendChild(h2);
-
+  //p element for time
   let time = document.createElement('p');
   time.classList.add('date');
   time.textContent = data.date;
   article.appendChild(time);
-
+  //p element for paragraph
   let p1 = document.createElement('p');
   p1.textContent = data.firstParagraph;
   article.appendChild(p1);
-
+  //p element for paragraph
   let p2 = document.createElement('p');
   p2.textContent = data.secondParagraph;
   article.appendChild(p2);
-
+  //p element for paragraph
   let p3 = document.createElement('p');
   p3.textContent = data.thirdParagraph;
   article.appendChild(p3);
-
+  //span element for button
   let expandButton = document.createElement('span');
   expandButton.classList.add("expandButton");
   expandButton.textContent = 'expand';
-  
+  //open and close the articles
   expandButton.addEventListener("click", () => {
     article.classList.toggle("article-open");
   });
 
   article.appendChild(expandButton);
+  //return our article element
   return article;
 }
-
+//set mount point
 let articles = document.querySelector('.articles');
+//append an article for every article in the data set
 data.forEach(article => articles.appendChild(createArticle(article)));
